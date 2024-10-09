@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BuilderScene.unity
     guid: ae8e60ba8006da24f8a3915d8f580be6
   - enabled: 0
     path: Assets/Demo/Demo.unity
     guid: c141d24673958bb44b780d361745cca7
+  - enabled: 1
+    path: Assets/Scenes/StartingMenu.unity
+    guid: be91947cac110430dbef2a4c6c1c8fff
+  - enabled: 1
+    path: Assets/Scenes/SceneSpriteMouvement.unity
+    guid: f42ddfbcf7c8c4860aef6b9b8edc1191
   m_configObjects: {}
