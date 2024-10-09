@@ -10,7 +10,7 @@ public class CollisionControler : MonoBehaviour
         if ((collision.gameObject.tag == "Water") || (collision.gameObject.tag == "Spike"))
         {
             Debug.Log("Game Over");
-            SceneManager.LoadScene("StartingMenu", LoadSceneMode.Single);
+            SceneManager.LoadScene("DieScene", LoadSceneMode.Single);
 
         }
     }
