@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CollisionControler : MonoBehaviour
@@ -9,6 +10,8 @@ public class CollisionControler : MonoBehaviour
         if ((collision.gameObject.tag == "Water") || (collision.gameObject.tag == "Spike"))
         {
             Debug.Log("Game Over");
+            SceneManager.LoadScene("StartingMenu", LoadSceneMode.Single);
+
         }
     }
 
