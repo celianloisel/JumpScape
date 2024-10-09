@@ -16,4 +16,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("SceneSpriteMouvement", LoadSceneMode.Single);
         Debug.Log("Play");
     }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("StartingMenu", LoadSceneMode.Single);
+        Debug.Log("Home");
+    }
 }
