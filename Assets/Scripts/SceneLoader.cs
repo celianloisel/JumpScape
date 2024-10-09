@@ -22,4 +22,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("StartingMenu", LoadSceneMode.Single);
         Debug.Log("Home");
     }
+    
+    public void LaucnhGame()
+    {
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        Debug.Log("Launch");
+    }
 }
