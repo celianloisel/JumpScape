@@ -8,7 +8,9 @@ public class HighlightInteraction : MonoBehaviour
     {
         if (prefabToInstantiate != null)
         {
-            Instantiate(prefabToInstantiate, transform.position, Quaternion.identity);
+
+            var spawnedMap = Instantiate(prefabToInstantiate, (transform.position + new Vector3(-5.6f, -5.6f, 0)), Quaternion.identity);
+            spawnedMap.name = prefabToInstantiate.name;
         }
     }
 }

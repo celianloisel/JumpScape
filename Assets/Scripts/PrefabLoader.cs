@@ -11,6 +11,7 @@ public class PrefabLoader : MonoBehaviour
     public GameObject prefabButton;
     public Transform panel;
     private GameObject selectedPrefab = null;
+    private Button lastSelectedButton = null;
 
     void Start()
     {
@@ -36,14 +37,17 @@ public class PrefabLoader : MonoBehaviour
                     buttonText.text = prefab.name;
                 }
 
-                buttonInstance.GetComponent<Button>().onClick.AddListener(() => OnPrefabClicked(prefab));
+                Button buttonComponent = buttonInstance.GetComponent<Button>();
+
+                buttonComponent.onClick.AddListener(() => OnPrefabClicked(prefab, buttonComponent));
             }
         }
     }
 
-    void OnPrefabClicked(GameObject prefab)
+    void OnPrefabClicked(GameObject prefab, Button buttonComponent)
     {
         selectedPrefab = prefab;
+        lastSelectedButton = buttonComponent;
     }
     
     void Update()
@@ -61,6 +65,14 @@ public class PrefabLoader : MonoBehaviour
                     {
                         interaction.prefabToInstantiate = selectedPrefab;
                         interaction.InstantiatePrefab();
+
+                        if (lastSelectedButton != null)
+                        {
+                            lastSelectedButton.interactable = false;
+                            lastSelectedButton = null;
+                        }
+
+                        selectedPrefab = null;
                     }
                 }
             }
