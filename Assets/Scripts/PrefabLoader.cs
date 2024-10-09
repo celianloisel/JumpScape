@@ -39,17 +39,15 @@ public class PrefabLoader : MonoBehaviour
 
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
 
-                // Pass both the prefab and the button to the listener
                 buttonComponent.onClick.AddListener(() => OnPrefabClicked(prefab, buttonComponent));
             }
         }
     }
 
-    // Update this method to accept both the prefab and the button component
     void OnPrefabClicked(GameObject prefab, Button buttonComponent)
     {
         selectedPrefab = prefab;
-        lastSelectedButton = buttonComponent; // Now we assign the clicked button to lastSelectedButton
+        lastSelectedButton = buttonComponent;
     }
     
     void Update()
@@ -68,7 +66,6 @@ public class PrefabLoader : MonoBehaviour
                         interaction.prefabToInstantiate = selectedPrefab;
                         interaction.InstantiatePrefab();
 
-                        // Deactivate the button after placing the prefab
                         if (lastSelectedButton != null)
                         {
                             lastSelectedButton.interactable = false;
