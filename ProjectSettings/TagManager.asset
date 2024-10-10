@@ -8,6 +8,8 @@ TagManager:
   - Water
   - Spike
   - Tiles
+  - Highlight
+  - Chest
   layers:
   - Default
   - TransparentFX
