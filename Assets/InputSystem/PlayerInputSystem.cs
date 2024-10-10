@@ -25,12 +25,11 @@ public class PlayerInputSystem : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Mouvement.ReadValue<Vector2>();
-        var speed = 10;
+        var speed = 12;
         body.AddForce(new Vector2(inputVector.x * speed, 0), ForceMode2D.Force);
 
         isGrounded = CheckGround();
 
-        // Si le joueur est au sol, on réactive la possibilité de sauter
         if (isGrounded && !canJump)
         {
             canJump = true;
@@ -44,8 +43,8 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (context.performed && isGrounded && canJump)
         {
-            body.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
-            canJump = false; // Désactiver les sauts tant qu'il est en l'air
+            body.AddForce(Vector2.up * 7, ForceMode2D.Impulse);
+            canJump = false;
         }
     }
 
