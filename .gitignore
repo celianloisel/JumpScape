@@ -77,3 +77,4 @@ Assets/.DS_Store
 Assets/Scenes/.DS_Store
 .DS_Store
 .gitignore
+*.vsconfig
