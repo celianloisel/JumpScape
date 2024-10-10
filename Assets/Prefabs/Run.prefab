@@ -4996,6 +4996,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  speed: 4
+  jumpForce: 10
 --- !u!70 &7282723665031076806
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

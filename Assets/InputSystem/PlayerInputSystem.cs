@@ -9,10 +9,13 @@ public class PlayerInputSystem : MonoBehaviour
     private bool isGrounded;
     private bool canJump;
 
-    [SerializeField] private float groundCheckDistance = 0.1f; 
+    [SerializeField] private float groundCheckDistance = 0.1f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float speed = 12f;
+    [SerializeField] private float jumpForce = 7f;
 
-    private void Awake() {
+    private void Awake()
+    {
         body = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
 
@@ -25,8 +28,10 @@ public class PlayerInputSystem : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 inputVector = playerInputActions.Player.Mouvement.ReadValue<Vector2>();
-        var speed = 12;
-        body.AddForce(new Vector2(inputVector.x * speed, 0), ForceMode2D.Force);
+
+        float horizontalMovement = inputVector.x * speed;
+
+        body.velocity = new Vector2(horizontalMovement, body.velocity.y);
 
         isGrounded = CheckGround();
 
@@ -43,7 +48,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (context.performed && isGrounded && canJump)
         {
-            body.AddForce(Vector2.up * 7, ForceMode2D.Impulse);
+            body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
         }
     }
@@ -58,6 +63,6 @@ public class PlayerInputSystem : MonoBehaviour
             return true;
         }
 
-        return false; 
+        return false;
     }
 }
