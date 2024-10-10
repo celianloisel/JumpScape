@@ -5037,3 +5037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d2a93ecb7991b43a4682d28e75bf31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
