@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("SceneSpriteMouvement", LoadSceneMode.Single);
+        SceneManager.LoadScene("BuilderScene", LoadSceneMode.Single);
         Debug.Log("Play");
     }
 
