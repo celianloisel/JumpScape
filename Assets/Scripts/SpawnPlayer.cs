@@ -11,7 +11,6 @@ public class SpawnPlayer : MonoBehaviour
     {
         Vector3 spawnPoint = GameObject.Find("SpawnPoint").transform.position;
         player = Instantiate(playerPrefab, spawnPoint, Quaternion.identity);
-        player.AddComponent<PlayerInputSystem>();
         
         GameObject.Find("Cinemachine").GetComponent<Cinemachine.CinemachineVirtualCamera>().Follow = player.transform;
     }

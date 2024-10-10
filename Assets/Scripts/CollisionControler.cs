@@ -13,6 +13,12 @@ public class CollisionControler : MonoBehaviour
             SceneManager.LoadScene("DieScene", LoadSceneMode.Single);
 
         }
+
+        if (collision.gameObject.tag == "Chest")
+        {
+            Debug.Log("You Win");
+            SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
