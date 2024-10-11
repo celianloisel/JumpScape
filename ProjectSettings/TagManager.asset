@@ -10,6 +10,7 @@ TagManager:
   - Tiles
   - Highlight
   - Chest
+  - EndingPlateform
   layers:
   - Default
   - TransparentFX
