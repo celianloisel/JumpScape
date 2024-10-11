@@ -5,45 +5,46 @@ using System.IO;
 using UnityEditor;
 using TMPro;
 
+[System.Serializable]
+class PrefabList
+{
+    public GameObject[] prefabs;
+}
+
 public class PrefabLoader : MonoBehaviour
 {
-    public string folderPath = "Assets/Prefabs/Map";
+    public string folderPath;
     public GameObject prefabButton;
     public Transform panel;
 
     public static GameObject selectedPrefab = null; 
     private Button lastSelectedButton = null;
+	
+	[SerializeField]
+	private PrefabList[] prefabs;
 
     void Start()
     {
         LoadPrefabs();
     }
 
-    void LoadPrefabs()
+	void LoadPrefabs()
     {
-        folderPath = Path.Combine(folderPath, $"1-{GameData.level.ToString()}");
-
-        string[] prefabFiles = Directory.GetFiles(folderPath, "*.prefab", SearchOption.AllDirectories);
-
-        foreach (string prefabFile in prefabFiles)
+        foreach (GameObject prefab in prefabs[GameData.level - 1].prefabs)
         {
-            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabFile);
+            GameObject buttonInstance = Instantiate(prefabButton, panel);
+            TextMeshProUGUI buttonText = buttonInstance.GetComponentInChildren<TextMeshProUGUI>();
 
-            if (prefab != null)
+            if (buttonText != null)
             {
-                GameObject buttonInstance = Instantiate(prefabButton, panel);
-                TextMeshProUGUI buttonText = buttonInstance.GetComponentInChildren<TextMeshProUGUI>();
-
-                if (buttonText != null)
-                {
-                    buttonText.text = prefab.name;
-                }
-
-                Button buttonComponent = buttonInstance.GetComponent<Button>();
-                buttonComponent.onClick.AddListener(() => OnPrefabClicked(prefab, buttonComponent));
+                buttonText.text = prefab.name;
             }
+
+            Button buttonComponent = buttonInstance.GetComponent<Button>();
+            buttonComponent.onClick.AddListener(() => OnPrefabClicked(prefab, buttonComponent));
         }
-    }
+	
+	}
 
     void OnPrefabClicked(GameObject prefab, Button buttonComponent)
     {

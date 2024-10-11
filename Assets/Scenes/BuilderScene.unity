@@ -1065,6 +1065,22 @@ MonoBehaviour:
   folderPath: Assets/Prefabs/Map
   prefabButton: {fileID: 7498416826083259596, guid: 78e5810607fd9304fb9b0c1b143ebb6b, type: 3}
   panel: {fileID: 2071044147}
+  prefabs:
+  - prefabs:
+    - {fileID: 8522459826188009658, guid: 4d110d33b7de6d34d826a379367b0b7a, type: 3}
+    - {fileID: 483530126030891527, guid: 4337c496128748a4b9fc751d87209042, type: 3}
+    - {fileID: 4823240900775373490, guid: fa597cd6faa80904e854c0f75faa684c, type: 3}
+  - prefabs:
+    - {fileID: 4882168633649857582, guid: df114e782bd0c4473aeab75fcc80b986, type: 3}
+    - {fileID: 8481423227510971572, guid: 845db1568cb344087bf6a56cde5f35b5, type: 3}
+    - {fileID: 506152163727324522, guid: 1e94cd655640647a09afda1bd066708e, type: 3}
+    - {fileID: 54588879839412926, guid: 6207c463abe0c44eea77498249dfca45, type: 3}
+    - {fileID: 506152163727324522, guid: 331b4c2a432ce5c48ad4cf373681757a, type: 3}
+    - {fileID: 506152163727324522, guid: b0f7029b1145d0b4fb28b8abd41d2893, type: 3}
+  - prefabs:
+    - {fileID: 8522459826188009658, guid: 852a210e1cfcd4448913dd4803bed07b, type: 3}
+    - {fileID: 483530126030891527, guid: 5071c5fdd42bb49fd99c07d0f88de3e9, type: 3}
+    - {fileID: 4823240900775373490, guid: bccea1c8882fb4e4783efd8ac4e7a534, type: 3}
 --- !u!114 &2071044149
 MonoBehaviour:
   m_ObjectHideFlags: 0
