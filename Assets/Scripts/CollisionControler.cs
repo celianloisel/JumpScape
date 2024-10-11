@@ -10,8 +10,21 @@ public class CollisionControler : MonoBehaviour
         if ((collision.gameObject.tag == "Water") || (collision.gameObject.tag == "Spike"))
         {
             Debug.Log("Game Over");
+	        foreach (var obj in FindObjectsOfType<PersistentObject>())
+            {
+                Destroy(obj.gameObject);
+            }
             SceneManager.LoadScene("DieScene", LoadSceneMode.Single);
+        }
 
+        if (collision.gameObject.tag == "Chest")
+        {
+            Debug.Log("You Win");
+            foreach (var obj in FindObjectsOfType<PersistentObject>())
+            {
+                Destroy(obj.gameObject);
+            }
+            SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
         }
     }
 
