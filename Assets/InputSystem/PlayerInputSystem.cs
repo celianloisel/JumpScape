@@ -6,7 +6,9 @@ public class PlayerInputSystem : MonoBehaviour
     private Rigidbody2D body;
     private PlayerInput playerInput;
     private PlayerInputActions playerInputActions;
+    private Animator anim;
     private bool isGrounded;
+    private bool isFlip;
     private bool canJump;
 
     [SerializeField] private float groundCheckDistance = 0.1f;
@@ -18,7 +20,9 @@ public class PlayerInputSystem : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        anim = GetComponent<Animator>();
 
+        anim.SetBool("isPlayerRunning", false);
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
@@ -39,7 +43,39 @@ public class PlayerInputSystem : MonoBehaviour
         {
             canJump = true;
         }
-
+        if(body.velocity.x != 0)
+        {
+            if (body.velocity.x > 0 && isFlip)
+            {
+                Flip();
+            }
+            else if (body.velocity.x < 0 && !isFlip)
+            {
+                Flip();
+            }
+            anim.SetBool("isPlayerRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isPlayerRunning", false);
+        }
+        if(body.velocity.y > 0.5)
+        {
+            Debug.Log("Jumping");
+            Debug.Log(body.velocity.y);
+            anim.SetBool("isJumping", true);
+        }
+        if (!isGrounded && body.velocity.y < -0.5f)
+        {
+            Debug.Log("Falling");
+            Debug.Log(body.velocity.y);
+            anim.SetBool("isFalling", true);
+        }
+        else if(body.velocity.y >= -0.5 && body.velocity.y <= 0.5)
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", false);
+        }
         Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - 0.5f);
         Debug.DrawRay(rayOrigin, Vector2.down * groundCheckDistance, Color.red);
     }
@@ -48,6 +84,7 @@ public class PlayerInputSystem : MonoBehaviour
     {
         if (context.performed && isGrounded && canJump)
         {
+            anim.SetBool("isJumping", true);
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             canJump = false;
         }
@@ -64,5 +101,13 @@ public class PlayerInputSystem : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void Flip()
+    {
+        isFlip = !isFlip;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
