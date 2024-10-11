@@ -20,6 +20,10 @@ public class CollisionControler : MonoBehaviour
         if (collision.gameObject.tag == "Chest")
         {
             Debug.Log("You Win");
+            foreach (var obj in FindObjectsOfType<PersistentObject>())
+            {
+                Destroy(obj.gameObject);
+            }
             SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
         }
     }
