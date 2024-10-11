@@ -7,6 +7,27 @@ public class SceneLoader : MonoBehaviour
 {
 	public int level;
 
+	public void Start() {
+
+	    if (SceneManager.GetActiveScene().name == "BuilderScene")
+        {
+			level = GameData.level;
+            if (level == 2)
+        	{
+            	GameObject endingPlatform = GameObject.FindWithTag("EndingPlateform");
+            	if (endingPlatform != null)
+            	{
+                	endingPlatform.transform.position = new Vector3(
+                    	endingPlatform.transform.position.x,
+                    	endingPlatform.transform.position.y + 12.6f,
+                    	endingPlatform.transform.position.z
+                	);
+
+            	}
+        	}	
+        }
+	}
+
     public void QuitGame()
     {
         Application.Quit();
