@@ -61,14 +61,10 @@ public class PlayerInputSystem : MonoBehaviour
         }
         if(body.velocity.y > 0.5)
         {
-            Debug.Log("Jumping");
-            Debug.Log(body.velocity.y);
             anim.SetBool("isJumping", true);
         }
         if (!isGrounded && body.velocity.y < -0.5f)
         {
-            Debug.Log("Falling");
-            Debug.Log(body.velocity.y);
             anim.SetBool("isFalling", true);
         }
         else if(body.velocity.y >= -0.5 && body.velocity.y <= 0.5)
