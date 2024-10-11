@@ -5,27 +5,32 @@ using UnityEngine;
 
 public class SceneLoader : MonoBehaviour
 {
+	public int level;
+
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Quit");
     }
 
-    public void PlayGame()
+    public void PlayGame(int level)
     {
+		GameData.level = level;
+
         SceneManager.LoadScene("BuilderScene", LoadSceneMode.Single);
-        Debug.Log("Play");
     }
 
     public void Home()
     {
         SceneManager.LoadScene("StartingMenu", LoadSceneMode.Single);
-        Debug.Log("Home");
     }
     
-    public void LaucnhGame()
+    public void LaunchGame()
     {
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
-        Debug.Log("Launch");
+    }
+
+	public void LevelSelect()
+    {
+        SceneManager.LoadScene("LevelScene", LoadSceneMode.Single);
     }
 }

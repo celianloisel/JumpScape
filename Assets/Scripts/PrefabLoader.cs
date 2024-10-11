@@ -7,7 +7,7 @@ using TMPro;
 
 public class PrefabLoader : MonoBehaviour
 {
-    public string folderPath = "Assets/Prefabs";
+    public string folderPath = "Assets/Prefabs/Map";
     public GameObject prefabButton;
     public Transform panel;
     private GameObject selectedPrefab = null;
@@ -20,6 +20,8 @@ public class PrefabLoader : MonoBehaviour
 
     void LoadPrefabs()
     {
+        folderPath = Path.Combine(folderPath, $"1-{GameData.level.ToString()}");
+        
         string[] prefabFiles = Directory.GetFiles(folderPath, "*.prefab", SearchOption.AllDirectories);
 
         foreach (string prefabFile in prefabFiles)

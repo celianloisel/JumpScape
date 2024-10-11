@@ -537,7 +537,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1665595595}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: LevelSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1034,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641fe0766904445879eaa29bdb8aad13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
 --- !u!224 &1665595596
 RectTransform:
   m_ObjectHideFlags: 0
