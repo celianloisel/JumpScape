@@ -10,7 +10,8 @@ public class PrefabLoader : MonoBehaviour
     public string folderPath = "Assets/Prefabs/Map";
     public GameObject prefabButton;
     public Transform panel;
-    private GameObject selectedPrefab = null;
+
+    public static GameObject selectedPrefab = null; 
     private Button lastSelectedButton = null;
 
     void Start()
@@ -21,17 +22,16 @@ public class PrefabLoader : MonoBehaviour
     void LoadPrefabs()
     {
         folderPath = Path.Combine(folderPath, $"1-{GameData.level.ToString()}");
-        
+
         string[] prefabFiles = Directory.GetFiles(folderPath, "*.prefab", SearchOption.AllDirectories);
 
         foreach (string prefabFile in prefabFiles)
         {
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabFile);
-            
+
             if (prefab != null)
             {
                 GameObject buttonInstance = Instantiate(prefabButton, panel);
-
                 TextMeshProUGUI buttonText = buttonInstance.GetComponentInChildren<TextMeshProUGUI>();
 
                 if (buttonText != null)
@@ -40,7 +40,6 @@ public class PrefabLoader : MonoBehaviour
                 }
 
                 Button buttonComponent = buttonInstance.GetComponent<Button>();
-
                 buttonComponent.onClick.AddListener(() => OnPrefabClicked(prefab, buttonComponent));
             }
         }
@@ -51,7 +50,7 @@ public class PrefabLoader : MonoBehaviour
         selectedPrefab = prefab;
         lastSelectedButton = buttonComponent;
     }
-    
+
     void Update()
     {
         if (selectedPrefab != null && Input.GetMouseButtonDown(0))
@@ -59,13 +58,13 @@ public class PrefabLoader : MonoBehaviour
             if (!EventSystem.current.IsPointerOverGameObject())
             {
                 GameObject[] highlights = GameObject.FindGameObjectsWithTag("Highlight");
-                
+
                 foreach (var highlight in highlights)
                 {
                     HighlightInteraction interaction = highlight.GetComponent<HighlightInteraction>();
                     if (interaction != null)
                     {
-                        interaction.prefabToInstantiate = selectedPrefab;
+                        interaction.prefabToInstantiate = selectedPrefab; 
                         interaction.InstantiatePrefab();
 
                         if (lastSelectedButton != null)

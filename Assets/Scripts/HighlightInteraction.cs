@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HighlightInteraction : MonoBehaviour
 {
     public GameObject prefabToInstantiate;
+	private GameObject previewInstance;
 
     public void InstantiatePrefab()
     {
