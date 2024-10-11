@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641fe0766904445879eaa29bdb8aad13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
 --- !u!4 &107592287
 Transform:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 107592286}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LaucnhGame
+        m_MethodName: LaunchGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1057,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554a0264b2fbdf5479a6f412a038bd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: Assets/Prefabs/Map/1-1
+  folderPath: Assets/Prefabs/Map
   prefabButton: {fileID: 7498416826083259596, guid: 78e5810607fd9304fb9b0c1b143ebb6b, type: 3}
   panel: {fileID: 2071044147}
 --- !u!114 &2071044149
